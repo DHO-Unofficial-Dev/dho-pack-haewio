@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <title>해위오 개인 농장</title>
+  <path d="M8 55V30l24-17 24 17v25Z" fill="#87A95E" stroke="#4A2410" stroke-width="3"/>
+  <rect x="25" y="38" width="14" height="17" fill="#8A5A2B"/>
+  <path d="M18 29h28L32 19Z" fill="#E8873A"/>
+  <path d="M9 55h46M14 49l7 6m-7 0 7-6m22 6 7-6m-7 0 7 6" fill="none" stroke="#E7C64B" stroke-width="3"/>
+</svg>

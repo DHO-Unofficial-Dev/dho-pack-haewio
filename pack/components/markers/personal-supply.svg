@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <title>해위오 보급지</title>
+  <rect x="8" y="16" width="48" height="40" fill="#A87A4A" stroke="#4A2410" stroke-width="4"/>
+  <rect x="6" y="10" width="52" height="10" fill="#8A5A2B" stroke="#4A2410" stroke-width="4"/>
+  <rect x="8" y="32" width="48" height="9" fill="#E8873A"/>
+  <rect x="26" y="16" width="12" height="40" fill="#E8873A"/>
+  <rect x="29" y="34" width="6" height="6" fill="#F4EFE3"/>
+</svg>

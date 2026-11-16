@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <title>해위오 내륙 도시 탑</title>
+  <path d="M13 56V23h9v-9h8v9h8v-9h8v9h7v33Z" fill="#D9722B" stroke="#4A2410" stroke-width="3"/>
+  <rect x="23" y="31" width="7" height="9" fill="#E7C64B"/>
+  <rect x="38" y="31" width="7" height="9" fill="#E7C64B"/>
+  <path d="M26 56V48a7 7 0 0 1 14 0v8Z" fill="#17110C"/>
+</svg>

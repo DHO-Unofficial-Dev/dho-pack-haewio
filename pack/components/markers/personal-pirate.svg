@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <title>해위오 해적 출몰</title>
+  <rect x="6" y="44" width="52" height="7" fill="#C7B9A0" stroke="#4A2410" stroke-width="3"/>
+  <ellipse cx="32" cy="26" rx="20" ry="18" fill="#F4EFE3" stroke="#4A2410" stroke-width="3"/>
+  <rect x="22" y="38" width="20" height="10" fill="#F4EFE3" stroke="#4A2410" stroke-width="3"/>
+  <ellipse cx="24" cy="24" rx="6" ry="7" fill="#4A2410"/>
+  <ellipse cx="40" cy="24" rx="6" ry="7" fill="#4A2410"/>
+  <polygon points="32,30 36,38 28,38" fill="#4A2410"/>
+  <rect x="29" y="38" width="3" height="10" fill="#4A2410"/>
+  <rect x="35" y="38" width="3" height="10" fill="#4A2410"/>
+</svg>

@@ -1,0 +1,533 @@
+{
+  "formatVersion": 1,
+  "packId": "community.dhoport.haewio",
+  "name": "해위오 에디션",
+  "author": "DHO PORT",
+  "version": "1.3.0",
+  "license": "CC-BY-4.0",
+  "publisher": {
+    "id": "community.dhoport",
+    "name": "DHO PORT",
+    "url": "https://dhoport.app"
+  },
+  "source": {
+    "name": "DHO PORT 커뮤니티 · 해위오 에디션",
+    "url": "https://github.com/DHO-Unofficial-Dev/DHO-Manager-v2/tree/v2.1.4/landing/resource-pack"
+  },
+  "thumbnail": "thumbnail.webp",
+  "compatibility": {
+    "minimumManagerVersion": "2.1.4",
+    "maximumManagerVersionExclusive": "3.0.0"
+  },
+  "files": {
+    "components/app-icon/window.png": "sha256:66ac6cae59f7397320a3393ec0030159c09bfb84f08b0625dc164a91c6246f6e",
+    "components/markers/automatic-spark.webp": "sha256:0af5bbfdec7225a81bc67eb47376972818e7d897e50f03a956c0cd6fabb7c5dd",
+    "components/markers/destination-jack.svg": "sha256:49f51b58420ed908cf9cc03ccff6b4dc488ea12a33779e798f15dc80c1a77437",
+    "components/markers/personal-memo-scroll.svg": "sha256:b0e4851d7c17f8d2da9f0c8553e4b709ced391af2a619a46a7c8d3ef1528bd76",
+    "components/markers/personal-pirate.svg": "sha256:0e71592fb926f1773b67288704b6d806f0ea46928154e74fed6c1b7077bdf624",
+    "components/markers/personal-pumpkin.svg": "sha256:8f038ec00950d935788ed778609003aef9720e1f8b26356c7f2af1afed6a2d2a",
+    "components/markers/personal-supply.svg": "sha256:266e723c99beefa93c4bd50b91ffe5de9beb56d28dd66768d9828fd91c12eaaf",
+    "components/markers/personal-wreck.svg": "sha256:6f4594ce982914689e16c91b5213cc3d1f33a1874411708582d39b935a3902af",
+    "components/markers/poi-guild-banner.svg": "sha256:53ee48a0bdce581202415bfbbbc7992b055f62557ce59c4488877b8b0c0529db",
+    "components/markers/poi-inland-city-tower.svg": "sha256:5d9bb1db238f1ee6012292bebc073f2e0f8796c7758719ef3574e1fb3a31a3a7",
+    "components/markers/poi-inland-ruin.svg": "sha256:422808e8379feca755421b689405f0a99bc95ae2c19b430d94d6e6bafcf2cd4f",
+    "components/markers/poi-landing-sign.svg": "sha256:26c66b7b6e5694e85d5093b51cfeb706603650324134cdfeb6b47114d2689d11",
+    "components/markers/poi-outskirts-gate.svg": "sha256:8650a12e9f48f21f73e8222720249cde6883cb7ac25ca4680f55dcd04ac2f62c",
+    "components/markers/poi-port-lantern.svg": "sha256:514d74d16c247482b53eb8e668b81dbd78bbbe4694979d33cea1bca982b23c16",
+    "components/markers/poi-private-farm.svg": "sha256:87cee4b581dc87610c0d468465dfb304dbb03ccc3ed41938ba389582430d18ed",
+    "components/markers/poi-sea-buoy.svg": "sha256:d795d4fbba0e73a77cc9e128736a08f356b5c55e6bbf099ebbd85ac60bfd6a9b",
+    "components/markers/ship-lantern.svg": "sha256:1ab5a76935bb7bf5b37b750337eba2fa0a95c16a51e404d25e48b429e3805c8f",
+    "components/markers/waypoint-rune.png": "sha256:277ed3bfb168d420784062dc5f43e2dd94f86c7990c29f59dfccaa954f7b88e1",
+    "thumbnail.webp": "sha256:ceb622f6acdffb3f43b80aa3995e0b1f40e11abb2263b24f5d5c0fc5ea4a48e1"
+  },
+  "componentRequirements": {},
+  "components": {
+    "infoPanelSkin": {
+      "id": "community.dhoport.haewio.info-panel",
+      "name": "해위오 정보 패널",
+      "colors": {
+        "panelBackground": "#17110C",
+        "panelBorder": "#7A6142",
+        "primaryText": "#F4EFE3",
+        "secondaryText": "#C7B9A0",
+        "mutedText": "#9C8E7B",
+        "accent": "#E8873A",
+        "routeHighlight": "#79E8F2",
+        "status": "#E7C64B",
+        "rule": "#33271C",
+        "arrivalBackground": "#3A2410",
+        "arrivalBorder": "#8A5A2B",
+        "arrivalText": "#F2A65A",
+        "editBackground": "#120D09",
+        "editText": "#F4EFE3",
+        "editBorder": "#79E8F2",
+        "editControlBorder": "#7A6A55"
+      },
+      "frame": {
+        "borderWidth": 1,
+        "cornerRadius": 2,
+        "backdropBlur": 4,
+        "shadow": "strong"
+      },
+      "navigator": {
+        "colors": {
+          "background": "#120D09",
+          "surface": "#241A12",
+          "text": "#F4EFE3",
+          "mutedText": "#B0A08A",
+          "line": "#8A6A45",
+          "rule": "#3A2C1E",
+          "accent": "#E8873A",
+          "danger": "#D2542F",
+          "focus": "#E7C64B"
+        },
+        "cornerRadius": 4
+      }
+    },
+    "steeringHudSkin": {
+      "id": "community.dhoport.haewio.steering-hud",
+      "name": "해위오 조향 HUD",
+      "colors": {
+        "neutral": "#F4EFE3",
+        "surface": "#17110C"
+      },
+      "guidanceColors": {
+        "direction": "#E8873A",
+        "target": "#79E8F2",
+        "aligned": "#6FA34B",
+        "centerMarker": "#E7C64B"
+      },
+      "opacity": {
+        "guideLine": 0.22,
+        "tick": 0.28,
+        "majorTick": 0.6,
+        "minorTick": 0.32,
+        "compassText": 0.7,
+        "minorCompassText": 0.38,
+        "centerLabel": 0.6,
+        "targetMarkerSurface": 0.72,
+        "targetLabelSurface": 0.82
+      },
+      "centerMarker": {
+        "verticalLength": 112,
+        "horizontalLength": 64,
+        "diamondSize": 12,
+        "lineWidth": 1
+      }
+    },
+    "mapHudSkin": {
+      "id": "community.dhoport.haewio.map-hud",
+      "name": "해위오 지도 HUD",
+      "colors": {
+        "surface": "#17110C",
+        "text": "#F4EFE3",
+        "mutedText": "#C7B9A0",
+        "border": "#A98A5F",
+        "accent": "#E8873A",
+        "connected": "#6FA34B",
+        "waiting": "#E7C64B",
+        "editText": "#F4EFE3"
+      },
+      "frame": {
+        "statusSurfaceOpacity": 0.78,
+        "highlightedSurfaceOpacity": 0.82,
+        "borderOpacity": 0.6,
+        "editSurfaceOpacity": 0.9,
+        "editBorderWidth": 2
+      },
+      "mapTheme": {
+        "vectorOpacity": 0.82,
+        "oceanColor": "#14444F",
+        "oceanOpacity": 0.08,
+        "showLandFill": true,
+        "landFillColor": "#33200F",
+        "landFillOpacity": 0.52,
+        "showCoastline": true,
+        "coastlineColor": "#F4EFE3",
+        "coastlineOpacity": 0.72,
+        "coastlineWidth": 0.9,
+        "coastlinePattern": "solid",
+        "showSeaRegions": true,
+        "seaRegionColor": "#E8873A",
+        "seaRegionOpacity": 0.68,
+        "seaRegionWidth": 1,
+        "seaRegionPattern": "dashed",
+        "showCurrentSeaRegion": true,
+        "currentSeaRegionColor": "#4FD8E0",
+        "currentSeaRegionOpacity": 0.18,
+        "showSeaRegionLabels": false,
+        "seaRegionLabelColor": "#E7C64B",
+        "seaRegionLabelOpacity": 0.78,
+        "seaRegionLabelSize": 10
+      },
+      "navigationTheme": {
+        "course": {
+          "color": "#E8873A",
+          "pattern": "solid",
+          "width": 2.2,
+          "opacity": 0.92
+        },
+        "compass": {
+          "color": "#C7B9A0",
+          "pattern": "dashed",
+          "width": 1.25,
+          "opacity": 0.48
+        },
+        "mouse": {
+          "color": "#9C8E7B",
+          "pattern": "dotted",
+          "width": 1,
+          "opacity": 0.3
+        },
+        "track": {
+          "color": "#4FD8E0",
+          "pattern": "solid",
+          "width": 1.5,
+          "opacity": 0.65
+        },
+        "route": {
+          "color": "#E86FC0",
+          "pattern": "dashed",
+          "width": 2,
+          "opacity": 0.8
+        }
+      }
+    },
+    "markerSet": {
+      "id": "community.dhoport.haewio.markers",
+      "name": "해위오 마커",
+      "assets": {
+        "ship.lantern": {
+          "path": "components/markers/ship-lantern.svg",
+          "displayWidth": 28,
+          "displayHeight": 28,
+          "anchorX": 0.5,
+          "anchorY": 0.5,
+          "rotateWithHeading": true
+        },
+        "destination.jack": {
+          "path": "components/markers/destination-jack.svg",
+          "displayWidth": 28,
+          "displayHeight": 28,
+          "anchorX": 0.5,
+          "anchorY": 0.5,
+          "rotateWithHeading": false
+        },
+        "route.waypoint.rune": {
+          "path": "components/markers/waypoint-rune.png",
+          "displayWidth": 24,
+          "displayHeight": 24,
+          "anchorX": 0.5,
+          "anchorY": 0.5,
+          "rotateWithHeading": false
+        },
+        "route.automatic.spark": {
+          "path": "components/markers/automatic-spark.webp",
+          "displayWidth": 14,
+          "displayHeight": 14,
+          "anchorX": 0.5,
+          "anchorY": 0.5,
+          "rotateWithHeading": false
+        },
+        "poi.port.lantern": {
+          "path": "components/markers/poi-port-lantern.svg",
+          "displayWidth": 18,
+          "displayHeight": 18,
+          "anchorX": 0.5,
+          "anchorY": 0.5,
+          "rotateWithHeading": false
+        },
+        "poi.guild.banner": {
+          "path": "components/markers/poi-guild-banner.svg",
+          "displayWidth": 20,
+          "displayHeight": 20,
+          "anchorX": 0.25,
+          "anchorY": 0.8,
+          "rotateWithHeading": false
+        },
+        "poi.landing.sign": {
+          "path": "components/markers/poi-landing-sign.svg",
+          "displayWidth": 20,
+          "displayHeight": 20,
+          "anchorX": 0.5,
+          "anchorY": 0.9,
+          "rotateWithHeading": false
+        },
+        "poi.outskirts.gate": {
+          "path": "components/markers/poi-outskirts-gate.svg",
+          "displayWidth": 20,
+          "displayHeight": 20,
+          "anchorX": 0.5,
+          "anchorY": 0.85,
+          "rotateWithHeading": false
+        },
+        "poi.inland.ruin": {
+          "path": "components/markers/poi-inland-ruin.svg",
+          "displayWidth": 20,
+          "displayHeight": 20,
+          "anchorX": 0.5,
+          "anchorY": 0.85,
+          "rotateWithHeading": false
+        },
+        "poi.inland.city.tower": {
+          "path": "components/markers/poi-inland-city-tower.svg",
+          "displayWidth": 20,
+          "displayHeight": 20,
+          "anchorX": 0.5,
+          "anchorY": 0.85,
+          "rotateWithHeading": false
+        },
+        "poi.private.farm": {
+          "path": "components/markers/poi-private-farm.svg",
+          "displayWidth": 20,
+          "displayHeight": 20,
+          "anchorX": 0.5,
+          "anchorY": 0.85,
+          "rotateWithHeading": false
+        },
+        "poi.sea.buoy": {
+          "path": "components/markers/poi-sea-buoy.svg",
+          "displayWidth": 20,
+          "displayHeight": 20,
+          "anchorX": 0.5,
+          "anchorY": 0.7,
+          "rotateWithHeading": false
+        },
+        "personal.pumpkin": {
+          "path": "components/markers/personal-pumpkin.svg",
+          "displayWidth": 20,
+          "displayHeight": 20,
+          "anchorX": 0.5,
+          "anchorY": 0.5,
+          "rotateWithHeading": false
+        },
+        "personal.supply": {
+          "path": "components/markers/personal-supply.svg",
+          "displayWidth": 20,
+          "displayHeight": 20,
+          "anchorX": 0.5,
+          "anchorY": 0.5,
+          "rotateWithHeading": false
+        },
+        "personal.pirate": {
+          "path": "components/markers/personal-pirate.svg",
+          "displayWidth": 20,
+          "displayHeight": 20,
+          "anchorX": 0.5,
+          "anchorY": 0.5,
+          "rotateWithHeading": false
+        },
+        "personal.wreck": {
+          "path": "components/markers/personal-wreck.svg",
+          "displayWidth": 20,
+          "displayHeight": 20,
+          "anchorX": 0.5,
+          "anchorY": 0.5,
+          "rotateWithHeading": false
+        },
+        "personal.memo.scroll": {
+          "path": "components/markers/personal-memo-scroll.svg",
+          "displayWidth": 20,
+          "displayHeight": 20,
+          "anchorX": 0.5,
+          "anchorY": 0.5,
+          "rotateWithHeading": false
+        }
+      },
+      "slots": {
+        "ship": "ship.lantern",
+        "waypoint": "route.waypoint.rune",
+        "automaticWaypoint": "route.automatic.spark",
+        "destination": "destination.jack",
+        "poi": {
+          "port": "poi.port.lantern",
+          "guild_city": "poi.guild.banner",
+          "landing": "poi.landing.sign",
+          "outskirts": "poi.outskirts.gate",
+          "inland": "poi.inland.ruin",
+          "inland_city": "poi.inland.city.tower",
+          "private_farm": "poi.private.farm",
+          "sea": "poi.sea.buoy"
+        },
+        "personal": {
+          "star": "personal.pumpkin",
+          "port": "poi.port.lantern",
+          "trade": "personal.supply",
+          "danger": "personal.pirate",
+          "discovery": "personal.wreck",
+          "memo": "personal.memo.scroll"
+        }
+      },
+      "ship": {
+        "background": "#17110C",
+        "backgroundOpacity": 0.82,
+        "border": "#FFE3B8",
+        "fill": "#E8873A",
+        "stroke": "#4A2410",
+        "radius": 8,
+        "length": 9,
+        "halfWidth": 5,
+        "strokeWidth": 1
+      },
+      "route": {
+        "fill": "#79E8F2",
+        "text": "#0E1E2B",
+        "inactiveStroke": "#6B5B48",
+        "waypointShape": "circle",
+        "destinationShape": "diamond",
+        "waypointRadius": 14,
+        "destinationRadius": 11,
+        "strokeWidth": 3,
+        "automatic": {
+          "fill": "#C7B9A0",
+          "stroke": "#4A2410",
+          "shape": "circle",
+          "radius": 6,
+          "strokeWidth": 1
+        }
+      },
+      "poi": {
+        "background": "#17110C",
+        "backgroundOpacity": 0.84,
+        "border": "#DCC9A8",
+        "focus": "#E8873A",
+        "focusText": "#FFE3B8",
+        "labelText": "#F4EFE3",
+        "labelHalo": "#17110C",
+        "radius": 7,
+        "glyphRadius": 4.5,
+        "labelFontSize": 10,
+        "types": {
+          "port": {
+            "fill": "#E8873A",
+            "shape": "circle"
+          },
+          "guild_city": {
+            "fill": "#E86FC0",
+            "shape": "diamond"
+          },
+          "landing": {
+            "fill": "#6FA34B",
+            "shape": "triangle"
+          },
+          "outskirts": {
+            "fill": "#C7B9A0",
+            "shape": "square"
+          },
+          "inland": {
+            "fill": "#A87A4A",
+            "shape": "diamond"
+          },
+          "inland_city": {
+            "fill": "#D9722B",
+            "shape": "circle"
+          },
+          "private_farm": {
+            "fill": "#87A95E",
+            "shape": "square"
+          },
+          "sea": {
+            "fill": "#4FD8E0",
+            "shape": "diamond"
+          }
+        }
+      },
+      "personal": {
+        "border": "#FFE3B8",
+        "glyph": "#FFF8E5",
+        "radius": 10,
+        "glyphStrokeWidth": 2,
+        "icons": {
+          "star": {
+            "fill": "#E86FC0"
+          },
+          "port": {
+            "fill": "#4FD8E0"
+          },
+          "trade": {
+            "fill": "#E7C64B"
+          },
+          "danger": {
+            "fill": "#D2542F"
+          },
+          "discovery": {
+            "fill": "#6FA34B"
+          },
+          "memo": {
+            "fill": "#A2937E"
+          }
+        },
+        "customTypes": {
+          "community.dhoport.haewio.lantern": {
+            "name": "등불 표식",
+            "fallbackIcon": "star",
+            "asset": "poi.port.lantern"
+          },
+          "community.dhoport.haewio.pumpkin": {
+            "name": "호박 표식",
+            "fallbackIcon": "star",
+            "asset": "personal.pumpkin"
+          },
+          "community.dhoport.haewio.supply": {
+            "name": "보급지",
+            "fallbackIcon": "port",
+            "asset": "personal.supply"
+          },
+          "community.dhoport.haewio.pirate": {
+            "name": "해적 출몰",
+            "fallbackIcon": "danger",
+            "asset": "personal.pirate"
+          },
+          "community.dhoport.haewio.wreck": {
+            "name": "난파선",
+            "fallbackIcon": "discovery",
+            "asset": "personal.wreck"
+          },
+          "community.dhoport.haewio.guild-rally": {
+            "name": "길드 집결지",
+            "fallbackIcon": "star",
+            "asset": "poi.guild.banner"
+          },
+          "community.dhoport.haewio.landing-camp": {
+            "name": "상륙 캠프",
+            "fallbackIcon": "port",
+            "asset": "poi.landing.sign"
+          },
+          "community.dhoport.haewio.city-gate": {
+            "name": "도시 관문",
+            "fallbackIcon": "memo",
+            "asset": "poi.outskirts.gate"
+          },
+          "community.dhoport.haewio.ruin": {
+            "name": "유적 후보",
+            "fallbackIcon": "discovery",
+            "asset": "poi.inland.ruin"
+          },
+          "community.dhoport.haewio.inland-base": {
+            "name": "내륙 거점",
+            "fallbackIcon": "port",
+            "asset": "poi.inland.city.tower"
+          },
+          "community.dhoport.haewio.private-farm": {
+            "name": "개인 농장",
+            "fallbackIcon": "trade",
+            "asset": "poi.private.farm"
+          },
+          "community.dhoport.haewio.sea-rally": {
+            "name": "해상 집결지",
+            "fallbackIcon": "port",
+            "asset": "poi.sea.buoy"
+          },
+          "community.dhoport.haewio.memo-scroll": {
+            "name": "항해 메모",
+            "fallbackIcon": "memo",
+            "asset": "personal.memo.scroll"
+          }
+        }
+      }
+    },
+    "appIcon": {
+      "window": "components/app-icon/window.png"
+    }
+  }
+}

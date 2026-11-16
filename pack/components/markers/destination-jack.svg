@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <title>해위오 잭오랜턴 목적지</title>
+  <rect x="30" y="2" width="5" height="7" fill="#6FA34B"/>
+  <path d="M35 5 L45 3 L41 9 Z" fill="#6FA34B"/>
+  <circle cx="32" cy="36" r="26" fill="#E8873A" stroke="#4A2410" stroke-width="3"/>
+  <circle cx="32" cy="36" r="12" fill="#17110C"/>
+  <polygon points="16,21 24,21 20,30" fill="#4A2410"/>
+  <polygon points="40,21 48,21 44,30" fill="#4A2410"/>
+  <polygon points="16,47 21,53 26,47 32,54 38,47 43,53 48,47 45,55 19,55" fill="#4A2410"/>
+</svg>

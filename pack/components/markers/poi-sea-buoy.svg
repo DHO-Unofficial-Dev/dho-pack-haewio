@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <title>해위오 해상 거점 부표</title>
+  <path d="M24 9h16l6 36H18Z" fill="#4FD8E0" stroke="#4A2410" stroke-width="3"/>
+  <rect x="22" y="22" width="20" height="9" fill="#E8873A"/>
+  <circle cx="32" cy="10" r="6" fill="#E7C64B" stroke="#4A2410" stroke-width="2"/>
+  <path d="M7 49c8-6 16 6 25 0s17 6 25 0M7 57c8-6 16 6 25 0s17 6 25 0" fill="none" stroke="#79E8F2" stroke-width="3"/>
+</svg>

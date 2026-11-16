@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <title>해위오 난파선</title>
+  <polygon points="6,40 46,24 54,40 18,54" fill="#8A5A2B" stroke="#4A2410" stroke-width="3"/>
+  <polygon points="12,37 44,25 46,31 16,42" fill="#A87A4A"/>
+  <polygon points="34,26 40,6 45,8 39,28" fill="#4A2410"/>
+  <polygon points="41,9 56,14 44,22" fill="#C7B9A0" stroke="#4A2410" stroke-width="2"/>
+  <path d="M4 48 C12 44 20 52 28 48 C36 44 44 52 52 48 C56 46 58 47 60 48" fill="none" stroke="#4FD8E0" stroke-width="4"/>
+</svg>
