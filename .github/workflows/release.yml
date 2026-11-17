@@ -1,0 +1,71 @@
+name: release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # 같은 태그의 Release를 이미 손으로 만들었으면 건너뜁니다.
+      - name: 이미 만든 Release 확인
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1; then
+            echo "Release ${GITHUB_REF_NAME}이 이미 있어 건너뜁니다."
+            echo "RELEASE_EXISTS=1" >> "$GITHUB_ENV"
+          fi
+
+      - uses: actions/setup-node@v4
+        if: env.RELEASE_EXISTS != '1'
+        with:
+          node-version: '20'
+
+      - name: 태그와 manifest 버전 확인
+        if: env.RELEASE_EXISTS != '1'
+        run: |
+          version="$(node -p "JSON.parse(require('fs').readFileSync('pack/manifest.json','utf8')).version")"
+          if [ "v${version}" != "${GITHUB_REF_NAME}" ]; then
+            echo "태그 ${GITHUB_REF_NAME}와 manifest 버전 v${version}이 다릅니다." >&2
+            exit 1
+          fi
+          echo "VERSION=${version}" >> "$GITHUB_ENV"
+
+      # DHO Navigator 2.2.0 공개 릴리즈부터 이 자산이 있습니다. 그 전에는 내려받기가 실패해 job이 멈춥니다.
+      - name: 공개 Pack 도구 받기
+        if: env.RELEASE_EXISTS != '1'
+        run: |
+          mkdir -p "$RUNNER_TEMP/dho-tools"
+          curl -fsSL -o "$RUNNER_TEMP/dho-pack-node-tools.zip" \
+            https://github.com/DHO-Unofficial-Dev/DHO-Manager/releases/latest/download/dho-pack-node-tools.zip
+          unzip -q "$RUNNER_TEMP/dho-pack-node-tools.zip" -d "$RUNNER_TEMP/dho-tools"
+          sha256sum "$RUNNER_TEMP/dho-pack-node-tools.zip"
+
+      - name: 검증과 빌드
+        if: env.RELEASE_EXISTS != '1'
+        run: |
+          tools="$RUNNER_TEMP/dho-tools/tools"
+          out="dist/haewio-${VERSION}.dho-pack"
+          mkdir -p dist
+          node "$tools/validate-pack.mjs" pack
+          node "$tools/build-dho-pack.mjs" pack "$out"
+          node "$tools/verify-archive.mjs" "$out"
+          (cd dist && sha256sum "$(basename "$out")" > "$(basename "$out").sha256")
+          cat dist/*.sha256
+
+      - name: Release 만들기
+        if: env.RELEASE_EXISTS != '1'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" dist/* \
+            --title "해위오 에디션 ${GITHUB_REF_NAME}" \
+            --notes "DHO Navigator 2.2.0 이상에서 리소스팩 설치로 \`.dho-pack\` 파일을 설치하세요."
