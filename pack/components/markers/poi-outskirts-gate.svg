@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
-  <title>해위오 도시 외곽 성문</title>
-  <path d="M8 56V20h10v-9h9v9h10v-9h9v9h10v36Z" fill="#C7B9A0" stroke="#4A2410" stroke-width="3"/>
-  <path d="M23 56V40a9 9 0 0 1 18 0v16Z" fill="#17110C"/>
-  <circle cx="32" cy="31" r="4" fill="#E8873A"/>
-</svg>

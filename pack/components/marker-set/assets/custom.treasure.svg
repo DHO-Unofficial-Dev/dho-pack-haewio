@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <title>해위오 보물상자</title>
+  <rect x="12" y="28" width="40" height="24" rx="3" fill="#E8873A" stroke="#4A2410" stroke-width="3"/>
+  <path d="M12 30 C12 18 52 18 52 30" fill="#F2A65A" stroke="#4A2410" stroke-width="3"/>
+  <rect x="28" y="30" width="8" height="10" rx="1.5" fill="#E7C64B" stroke="#4A2410" stroke-width="2"/>
+  <path d="M12 38 H52" stroke="#4A2410" stroke-width="2.5"/>
+</svg>

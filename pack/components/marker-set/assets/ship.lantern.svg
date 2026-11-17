@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-6 -14 76 80" width="76" height="80">
+  <title>해위오 호박선(뱃머리)</title>
+  <path d="M32 -12 L41 8 L32 4 L23 8 Z" fill="#F4EFE3" stroke="#4A2410" stroke-width="2.5" stroke-linejoin="round"/>
+  <path d="M32 10 C20 10 7 18 7 36 C7 51 18 60 32 60 C46 60 57 51 57 36 C57 18 44 10 32 10 Z" fill="#E8873A" stroke="#4A2410" stroke-width="3"/>
+  <path d="M32 12 C24 20 21 28 21 37 C21 47 25 55 31 59 M32 12 C40 20 43 28 43 37 C43 47 39 55 33 59" fill="none" stroke="#F2A65A" stroke-width="2.4"/>
+  <path d="M30 12 C29 8 30 5 33 3 L35 5 C33 7 33 9 34 12 Z" fill="#6FA34B" stroke="#4A2410" stroke-width="1.6"/>
+  <path d="M34 9 C40 4 47 6 47 11 C42 13 37 12 34 10 Z" fill="#6FA34B" stroke="#4A2410" stroke-width="1.4"/>
+  <path d="M16 31 L26 28 L23 39 Z M48 31 L38 28 L41 39 Z" fill="#FFD36B" stroke="#4A2410" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M16 44 C22 54 42 54 48 44 L44 46 L41 43 L37 47 L32 44 L27 47 L23 43 L20 46 Z" fill="#FFD36B" stroke="#4A2410" stroke-width="2" stroke-linejoin="round"/>
+</svg>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <title>해위오 촛불</title>
+  <path d="M32 8 C38 16 36 22 32 24 C28 22 26 16 32 8 Z" fill="#E7C64B" stroke="#4A2410" stroke-width="2"/>
+  <rect x="24" y="26" width="16" height="24" rx="2" fill="#F4EFE3" stroke="#4A2410" stroke-width="3"/>
+  <path d="M27 26 V34" stroke="#C7B9A0" stroke-width="3" stroke-linecap="round"/>
+  <rect x="18" y="50" width="28" height="6" rx="2" fill="#E8873A" stroke="#4A2410" stroke-width="2.5"/>
+</svg>

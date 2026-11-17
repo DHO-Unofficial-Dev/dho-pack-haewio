@@ -1,0 +1,161 @@
+/* 해위오 에디션 HUD. 짙은 갈색 틀, 주황 포인트, 얇은 이중선과 모서리 표식. 색은 1.3.0 값을 그대로 쓴다. */
+
+/* 항해 정보 HUD: 틀 */
+[data-dho-surface="navigator.hud.info"] [data-dho-part="frame"] {
+  position: relative;
+  color: #f4efe3;
+  background-color: #17110ce6;
+  border: 1px solid #7a6142;
+  border-radius: 2px;
+  outline: 1px solid #e8873a59;
+  outline-offset: -4px;
+  box-shadow: 0 6px 18px #000000a6;
+  backdrop-filter: blur(4px);
+  font-family: host-sans;
+}
+
+/* 모서리 표식: 왼쪽 위와 오른쪽 아래 */
+[data-dho-surface="navigator.hud.info"] [data-dho-part="frame"]::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: 9px;
+  height: 9px;
+  border-top-width: 2px;
+  border-top-style: solid;
+  border-top-color: #e8873a;
+  border-left-width: 2px;
+  border-left-style: solid;
+  border-left-color: #e8873a;
+}
+
+[data-dho-surface="navigator.hud.info"] [data-dho-part="frame"]::after {
+  content: "";
+  position: absolute;
+  right: -1px;
+  bottom: -1px;
+  width: 9px;
+  height: 9px;
+  border-right-width: 2px;
+  border-right-style: solid;
+  border-right-color: #e8873a;
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+  border-bottom-color: #e8873a;
+}
+
+/* 목적지는 세리프로 크게, 주황 */
+[data-dho-surface="navigator.hud.info"] [data-dho-part="destination"] {
+  color: #e8873a;
+  font-family: host-display;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+[data-dho-surface="navigator.hud.info"] [data-dho-part="waypoint-progress"],
+[data-dho-surface="navigator.hud.info"] [data-dho-part="turn"] {
+  color: #c7b9a0;
+}
+
+/* 거리·속도 숫자는 고정폭 */
+[data-dho-surface="navigator.hud.info"] [data-dho-part="distance"],
+[data-dho-surface="navigator.hud.info"] [data-dho-part="speed"] {
+  color: #f4efe3;
+  font-family: host-mono;
+}
+
+[data-dho-surface="navigator.hud.info"] [data-dho-part="status"] {
+  color: #e7c64b;
+}
+
+/* 도착 예정 */
+[data-dho-surface="navigator.hud.info"] [data-dho-part="arrival"] {
+  color: #f2a65a;
+  background-color: #3a2410;
+  border: 1px solid #8a5a2b;
+}
+
+/* 판독이 끊기면 틀을 흐리게 */
+[data-dho-surface="navigator.hud.info"][data-dho-state~="stale"] [data-dho-part="frame"] {
+  opacity: 0.62;
+}
+
+/* 조향 방향띠: 선·눈금은 1.3.0의 투명도를 색 알파값으로 옮김 */
+[data-dho-surface="navigator.hud.steering"] {
+  --steering-guide-line-color: #f4efe338;
+  --steering-tick-color: #f4efe347;
+  --steering-major-tick-color: #f4efe399;
+  --steering-minor-tick-color: #f4efe352;
+  --steering-compass-text-color: #f4efe3b3;
+  --steering-minor-compass-text-color: #f4efe361;
+  --steering-center-label-color: #f4efe399;
+  --steering-target-marker-surface: #17110cb8;
+  --steering-target-label-surface: #17110cd1;
+  --steering-direction-color: #e8873a;
+  --steering-target-color: #79e8f2;
+  --steering-aligned-color: #6fa34b;
+}
+
+/* 조향 띠 틀: 정보 HUD와 같은 짙은 갈색 판, 얇은 테두리, 모서리 표식 */
+[data-dho-surface="navigator.hud.steering"] [data-dho-part="frame"] {
+  position: relative;
+  background-color: #17110cd9;
+  border: 1px solid #7a6142;
+  border-radius: 2px;
+  outline: 1px solid #e8873a40;
+  outline-offset: -4px;
+  box-shadow: 0 4px 14px #00000080;
+}
+
+[data-dho-surface="navigator.hud.steering"] [data-dho-part="frame"]::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: 9px;
+  height: 9px;
+  border-top-width: 2px;
+  border-top-style: solid;
+  border-top-color: #e8873a;
+  border-left-width: 2px;
+  border-left-style: solid;
+  border-left-color: #e8873a;
+}
+
+[data-dho-surface="navigator.hud.steering"] [data-dho-part="frame"]::after {
+  content: "";
+  position: absolute;
+  right: -1px;
+  bottom: -1px;
+  width: 9px;
+  height: 9px;
+  border-right-width: 2px;
+  border-right-style: solid;
+  border-right-color: #e8873a;
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+  border-bottom-color: #e8873a;
+}
+
+[data-dho-surface="navigator.hud.steering"] [data-dho-part="heading-label"],
+[data-dho-surface="navigator.hud.steering"] [data-dho-part="target-label"] {
+  font-family: host-mono;
+}
+
+[data-dho-surface="navigator.hud.steering"] [data-dho-part="heading-label"] {
+  color: #e8873a;
+}
+
+[data-dho-surface="navigator.hud.steering"] [data-dho-part="target-destination"] {
+  font-family: host-display;
+}
+
+/* 중앙 조향 표식 */
+[data-dho-surface="navigator.hud.steering.center"] {
+  --steering-center-marker-color: #e7c64b;
+  --steering-center-line-width: 1px;
+  --steering-center-vertical-length: 112px;
+  --steering-center-horizontal-length: 64px;
+  --steering-center-diamond-size: 12px;
+}

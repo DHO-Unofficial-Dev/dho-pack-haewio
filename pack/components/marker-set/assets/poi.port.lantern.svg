@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <title>해위오 항구 등불</title>
+  <circle cx="32" cy="32" r="29" fill="#17110C" stroke="#DCC9A8" stroke-width="3.5"/>
+  <circle cx="32" cy="34" r="20" fill="#E7C64B" fill-opacity="0.16"/>
+  <circle cx="32" cy="34" r="13" fill="#E7C64B" fill-opacity="0.22"/>
+  <path d="M26 15 A6 6 0 0 1 38 15" fill="none" stroke="#C7B9A0" stroke-width="3"/>
+  <rect x="21" y="16" width="22" height="5" rx="1" fill="#4A2410" stroke="#C7B9A0" stroke-width="1.5"/>
+  <path d="M22 21 H42 L44 44 H20 Z" fill="#E8873A" stroke="#4A2410" stroke-width="2.5"/>
+  <rect x="26" y="25" width="12" height="15" rx="2" fill="#E7C64B"/>
+  <path d="M32 27 L35 36 H29 Z" fill="#F4EFE3"/>
+  <rect x="18" y="44" width="28" height="5" rx="1" fill="#4A2410" stroke="#C7B9A0" stroke-width="1.5"/>
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <title>해위오 해적 호박</title>
+  <path d="M32 10 C20 10 7 18 7 36 C7 51 18 60 32 60 C46 60 57 51 57 36 C57 18 44 10 32 10 Z" fill="#E8873A" stroke="#4A2410" stroke-width="3"/>
+  <path d="M32 12 C24 20 21 28 21 37 C21 47 25 55 31 59 M32 12 C40 20 43 28 43 37 C43 47 39 55 33 59" fill="none" stroke="#F2A65A" stroke-width="2.4"/>
+  <path d="M30 12 C29 8 30 5 33 3 L35 5 C33 7 33 9 34 12 Z" fill="#6FA34B" stroke="#4A2410" stroke-width="1.6"/>
+  <path d="M9 26 C20 19 44 19 55 26" fill="none" stroke="#B23A2E" stroke-width="5" stroke-linecap="round"/>
+  <path d="M54 25 L59 22 L58 28 Z" fill="#B23A2E"/>
+  <path d="M12 30 L52 40" stroke="#4A2410" stroke-width="2.2"/>
+  <ellipse cx="22" cy="34" rx="6" ry="5" fill="#4A2410"/>
+  <path d="M37 32 L45 32 L41 39 Z" fill="#4A2410"/>
+  <path d="M18 45 C24 53 40 53 46 45 C40 48 24 48 18 45 Z" fill="#4A2410"/>
+  <rect x="29" y="47" width="5" height="4" fill="#F4EFE3"/>
+</svg>

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <title>해위오 폭풍</title>
+  <path d="M16 34 C8 34 8 22 18 22 C20 12 36 10 40 20 C50 18 56 30 46 34 Z" fill="#C7B9A0" stroke="#4A2410" stroke-width="3"/>
+  <path d="M32 34 L26 46 H33 L28 58 L42 42 H35 L40 34 Z" fill="#E7C64B" stroke="#4A2410" stroke-width="2.5" stroke-linejoin="round"/>
+</svg>

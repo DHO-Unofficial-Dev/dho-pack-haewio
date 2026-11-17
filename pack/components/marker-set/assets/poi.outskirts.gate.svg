@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <title>해위오 근교 성문</title>
+  <rect x="4" y="4" width="56" height="56" rx="6" fill="#17110C" stroke="#DCC9A8" stroke-width="3.5"/>
+  <g transform="translate(32 33) scale(0.78) translate(-32 -33)">
+  <path d="M12 50 V22 H21 V15 H27 V22 H37 V15 H43 V22 H52 V50" fill="#C7B9A0" stroke="#4A2410" stroke-width="2.5"/>
+  <path d="M25 50 V36 A7 7 0 0 1 39 36 V50" fill="#17110C"/>
+  <path d="M28 50 L22 60 M36 50 L42 60" stroke="#E8873A" stroke-width="3" stroke-linecap="round"/>
+  </g>
+</svg>

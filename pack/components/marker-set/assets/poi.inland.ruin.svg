@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <title>해위오 내륙 유적</title>
+  <rect x="13" y="13" width="38" height="38" transform="rotate(45 32 32)" fill="#17110C" stroke="#DCC9A8" stroke-width="3.5"/>
+  <g transform="translate(32 33) scale(0.78) translate(-32 -33)">
+  <path d="M20 46 V26 H26 V46 M30 46 V20 H36 V46 M40 46 V32 H46 V46" fill="#C7B9A0" stroke="#4A2410" stroke-width="2.5"/>
+  <path d="M26 26 L23 22 M36 20 L39 17" stroke="#4A2410" stroke-width="2"/>
+  <rect x="16" y="46" width="34" height="5" fill="#4A2410"/>
+  <path d="M18 30 Q21 27 24 30 M40 36 Q43 33 46 36" stroke="#87A95E" stroke-width="2.5" fill="none"/>
+  </g>
+</svg>
