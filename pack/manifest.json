@@ -1,12 +1,12 @@
 {
   "formatVersion": 1,
-  "packId": "community.dhoport.haewio",
+  "packId": "app.dhoport.haewio",
   "name": "해위오 에디션",
   "author": "DHO PORT",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "license": "CC-BY-4.0",
   "publisher": {
-    "id": "community.dhoport",
+    "id": "app.dhoport",
     "name": "DHO PORT",
     "url": "https://dhoport.app"
   },
@@ -23,7 +23,7 @@
   "componentRequirements": {},
   "components": {
     "navigatorTheme": {
-      "id": "community.dhoport.haewio.navigator",
+      "id": "app.dhoport.haewio.navigator",
       "name": "해위오 본창",
       "colors": {
         "background": "#120D09",
@@ -39,7 +39,7 @@
       "cornerRadius": 4
     },
     "surfaceTheme": {
-      "id": "community.dhoport.haewio.surfaces",
+      "id": "app.dhoport.haewio.surfaces",
       "name": "해위오 HUD",
       "schemaVersion": 1,
       "stylesheet": "theme.css",
@@ -56,7 +56,7 @@
       }
     },
     "mapAppearance": {
-      "id": "community.dhoport.haewio.map",
+      "id": "app.dhoport.haewio.map",
       "name": "해위오 지도",
       "colors": {
         "surface": "#17110C",
@@ -134,7 +134,7 @@
       }
     },
     "markerSet": {
-      "id": "community.dhoport.haewio.markers",
+      "id": "app.dhoport.haewio.markers",
       "name": "해위오 마커",
       "assets": {
         "ship.lantern": {

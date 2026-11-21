@@ -26,6 +26,12 @@ DHO Navigator 리소스팩입니다. 짙은 갈색 바탕에 주황 포인트로
 | `markerSet` | 선박·목적지·경유지·거점 유형·개인 표식과 사용자 표식 8종 |
 | `appIcon` | 창 아이콘 |
 
+## 2.0.0과 달라진 점
+
+- 팩 ID가 DHO PORT 공식 배포자 ID로 바뀌었습니다(`community.dhoport.haewio` → `app.dhoport.haewio`, 배포자 `app.dhoport`).
+  화면과 구성요소는 2.0.0과 같습니다.
+- DHO Navigator 2.2.1부터 옛 ID로 설치한 해위오 에디션을 새 ID로 옮길 수 있습니다.
+
 ## 1.3.0과 달라진 점
 
 - DHO Navigator 2.2.0 형식으로 다시 만들었습니다. 2.2.0 이상에서 설치할 수 있습니다.
