@@ -27,7 +27,7 @@ env:
   # 2.2.1 공개 키트가 나오면 그 파일과 바이트를 대조하고, 다르면 파일과 이 목록을 같은 커밋에서 함께 바꿉니다.
   # 아래 SHA-256과 다르면 모든 job이 멈춥니다. 표식 이미지 검사에 codecs/의 두 wasm이 필요합니다.
   TOOL_SHA256SUMS: |
-    bc3129c9bfdf84cb7cdc0ff3b2a8fa249905812610391312359ac0b9df570b85  dho-pack-tool-bundle.mjs
+    0988dea1c66deb3696248d67cc6d0e7a0a2e6be0604f77cbdee59c2a1b92febf  dho-pack-tool-bundle.mjs
     a67cb6daad7539cf0fe9899bc786c03f939391055f04cf53ad713598ca4f466a  official-pack.mjs
     38749c251f4c7b87391eef95df708b7fc4266255b6168dc24a89223cf13cad61  validate-pack.mjs
     9fbbf1bb244a0d6ba5e6eb9c6db8da3887722e0f4758cedba5a0b09c072df92c  build-dho-pack.mjs
