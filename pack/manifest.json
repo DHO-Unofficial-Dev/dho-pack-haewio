@@ -15,8 +15,9 @@
     "url": "https://github.com/DHO-Unofficial-Dev/dho-pack-haewio"
   },
   "thumbnail": "thumbnail.png",
+  "updateCheck": { "url": "https://dhoport.app/api/navigator/update/pack/app.dhoport.haewio" },
   "compatibility": {
-    "minimumManagerVersion": "2.2.0",
+    "minimumManagerVersion": "2.2.1",
     "maximumManagerVersionExclusive": "3.0.0"
   },
   "files": {},
