@@ -12,7 +12,7 @@ DHO Navigator 리소스팩입니다. 짙은 갈색 바탕에 주황 포인트로
 
 ## 설치
 
-1. DHO Navigator 2.2.0 이상을 켭니다.
+1. DHO Navigator 2.2.1 이상을 켭니다.
 2. 왼쪽 위 로고 › Navigator 설정 › 팩 탭 › `팩 설치`에서 받은 `.dho-pack` 파일을 고릅니다.
 3. 설치한 팩을 켭니다. 직접 옮긴 HUD 위치·크기·투명도는 팩보다 우선합니다.
 
@@ -31,6 +31,8 @@ DHO Navigator 리소스팩입니다. 짙은 갈색 바탕에 주황 포인트로
 - 팩 ID가 DHO PORT 공식 배포자 ID로 바뀌었습니다(`community.dhoport.haewio` → `app.dhoport.haewio`, 배포자 `app.dhoport`).
   화면과 구성요소는 2.0.0과 같습니다.
 - DHO Navigator 2.2.1부터 옛 ID로 설치한 해위오 에디션을 새 ID로 옮길 수 있습니다.
+- DHO Navigator 공식 서명이 들어 있어 2.2.1 이상에서 설치할 수 있습니다. 받은 파일을 다시 압축하거나 내용을 바꾸면
+  설치되지 않습니다.
 
 ## 1.3.0과 달라진 점
 
