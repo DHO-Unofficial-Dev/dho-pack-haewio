@@ -1,36 +1,65 @@
 name: release
 
+# 보호 태그 v* push에서만 돕니다. 태그 v*는 저장소 소유자만 만들고 옮기고 지울 수 있게 ruleset으로 보호합니다.
 on:
   push:
     tags:
       - 'v*'
 
-permissions:
-  contents: write
+permissions: {}
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+defaults:
+  run:
+    shell: bash
+
+env:
+  ARCHIVE_PREFIX: haewio
+  OFFICIAL_KIND: pack
+  OFFICIAL_ID: app.dhoport.haewio
+  MANIFEST_ID_FIELD: packId
+  # DHO Navigator 공식 서명 공개 키(키 ID 08e8baf4d8fc20b2). 서명 확인은 이 값으로만 합니다.
+  OFFICIAL_PUBLIC_KEY: RWQI6Lr02PwgsuFqqQVCM+2eMg68tMD9zZf6RQb3D5OPPObVNWdUr4kC
+  # .github/tools/는 DHO Navigator 2.2.1 공개 Pack 제작 도구(dho-pack-node-tools.zip의 tools/)로 낼 파일의 사본입니다.
+  # 2.2.1 공개 키트가 나오면 그 파일과 바이트를 대조하고, 다르면 파일과 이 목록을 같은 커밋에서 함께 바꿉니다.
+  # 아래 SHA-256과 다르면 모든 job이 멈춥니다. 표식 이미지 검사에 codecs/의 두 wasm이 필요합니다.
+  TOOL_SHA256SUMS: |
+    0988dea1c66deb3696248d67cc6d0e7a0a2e6be0604f77cbdee59c2a1b92febf  dho-pack-tool-bundle.mjs
+    a67cb6daad7539cf0fe9899bc786c03f939391055f04cf53ad713598ca4f466a  official-pack.mjs
+    38749c251f4c7b87391eef95df708b7fc4266255b6168dc24a89223cf13cad61  validate-pack.mjs
+    9fbbf1bb244a0d6ba5e6eb9c6db8da3887722e0f4758cedba5a0b09c072df92c  build-dho-pack.mjs
+    9a564ab25c67a3ca2207441f485145e102c4d2901c3f85191b96cce264afc597  verify-archive.mjs
+    263d6e658808a74b72a1a99c5cc1d619237e70c150db6e41d5d84d3d117ab9be  codecs/squoosh_png_bg.wasm
+    30fb52fa2a80166d25ba7debf902218904ba1f05ccce9f959f722beff9e2f344  codecs/webp_dec.wasm
 
 jobs:
-  release:
+  # 비밀값 없이 저장소 코드를 검사하고 서명 전 archive를 만듭니다.
+  build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 0
 
-      # 같은 태그의 Release를 이미 손으로 만들었으면 건너뜁니다.
-      - name: 이미 만든 Release 확인
-        env:
-          GH_TOKEN: ${{ github.token }}
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '22'
+          package-manager-cache: false
+
+      - name: 태그 커밋이 main에 있는지 확인
         run: |
-          if gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1; then
-            echo "Release ${GITHUB_REF_NAME}이 이미 있어 건너뜁니다."
-            echo "RELEASE_EXISTS=1" >> "$GITHUB_ENV"
+          if ! git merge-base --is-ancestor "$GITHUB_SHA" origin/main; then
+            echo "태그 커밋 ${GITHUB_SHA}가 main에 없습니다." >&2
+            exit 1
           fi
 
-      - uses: actions/setup-node@v4
-        if: env.RELEASE_EXISTS != '1'
-        with:
-          node-version: '20'
-
       - name: 태그와 manifest 버전 확인
-        if: env.RELEASE_EXISTS != '1'
         run: |
           version="$(node -p "JSON.parse(require('fs').readFileSync('pack/manifest.json','utf8')).version")"
           if [ "v${version}" != "${GITHUB_REF_NAME}" ]; then
@@ -39,33 +68,147 @@ jobs:
           fi
           echo "VERSION=${version}" >> "$GITHUB_ENV"
 
-      # DHO Navigator 2.2.0 공개 릴리즈부터 이 자산이 있습니다. 그 전에는 내려받기가 실패해 job이 멈춥니다.
-      - name: 공개 Pack 도구 받기
-        if: env.RELEASE_EXISTS != '1'
-        run: |
-          mkdir -p "$RUNNER_TEMP/dho-tools"
-          curl -fsSL -o "$RUNNER_TEMP/dho-pack-node-tools.zip" \
-            https://github.com/DHO-Unofficial-Dev/DHO-Manager/releases/latest/download/dho-pack-node-tools.zip
-          unzip -q "$RUNNER_TEMP/dho-pack-node-tools.zip" -d "$RUNNER_TEMP/dho-tools"
-          sha256sum "$RUNNER_TEMP/dho-pack-node-tools.zip"
+      - name: 고정 도구 확인
+        working-directory: .github/tools
+        run: printf '%s' "$TOOL_SHA256SUMS" | sha256sum --check --strict -
 
       - name: 검증과 빌드
-        if: env.RELEASE_EXISTS != '1'
         run: |
-          tools="$RUNNER_TEMP/dho-tools/tools"
-          out="dist/haewio-${VERSION}.dho-pack"
-          mkdir -p dist
+          tools=.github/tools
+          handoff="$RUNNER_TEMP/handoff"
+          name="${ARCHIVE_PREFIX}-${VERSION}.dho-pack"
+          mkdir -p "$handoff/dist" "$handoff/tools"
           node "$tools/validate-pack.mjs" pack
-          node "$tools/build-dho-pack.mjs" pack "$out"
-          node "$tools/verify-archive.mjs" "$out"
-          (cd dist && sha256sum "$(basename "$out")" > "$(basename "$out").sha256")
-          cat dist/*.sha256
+          node "$tools/build-dho-pack.mjs" pack "$handoff/dist/$name"
+          node "$tools/verify-archive.mjs" "$handoff/dist/$name"
+          (cd "$handoff/dist" && sha256sum "$name" > unsigned.sha256 && cat unsigned.sha256)
+          cp -R "$tools"/. "$handoff/tools/"
 
-      - name: Release 만들기
-        if: env.RELEASE_EXISTS != '1'
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: handoff
+          path: ${{ runner.temp }}/handoff/
+          if-no-files-found: error
+          retention-days: 1
+
+  # 저장소 checkout·의존성·저장소 스크립트 없이 build 산출물과 고정 도구만으로 서명합니다.
+  # 이 job은 저장소에 쓸 수 없습니다.
+  sign:
+    needs: build
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '22'
+          package-manager-cache: false
+
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: handoff
+          path: ${{ runner.temp }}/handoff
+
+      - name: 서명 도구와 산출물 확인
+        run: |
+          cd "$RUNNER_TEMP/handoff"
+          node --version
+          (cd tools && printf '%s' "$TOOL_SHA256SUMS" | sha256sum --check --strict -)
+          expected="$(printf '%s' "$TOOL_SHA256SUMS" | grep -c .)"
+          actual="$(find tools -type f | wc -l)"
+          if [ "$expected" != "$actual" ]; then
+            echo "tools 파일 수가 ${actual}개로 고정 목록 ${expected}개와 다릅니다." >&2
+            exit 1
+          fi
+          name="${ARCHIVE_PREFIX}-${GITHUB_REF_NAME#v}.dho-pack"
+          (cd dist && sha256sum --check --strict unsigned.sha256)
+          test -f "dist/$name"
+          got="$(unzip -p "dist/$name" manifest.json | node -e 'const m=JSON.parse(require("fs").readFileSync(0,"utf8"));process.stdout.write(String(m[process.env.MANIFEST_ID_FIELD])+" "+String(m.version))')"
+          if [ "$got" != "${OFFICIAL_ID} ${GITHUB_REF_NAME#v}" ]; then
+            echo "archive의 id·version이 태그와 다릅니다: ${got}" >&2
+            exit 1
+          fi
+          echo "ARCHIVE_NAME=$name" >> "$GITHUB_ENV"
+
+      - name: 이미 만든 Release 확인
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release create "$GITHUB_REF_NAME" dist/* \
+          if gh release view "$GITHUB_REF_NAME" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo "Release ${GITHUB_REF_NAME}이 이미 있어 서명하지 않습니다." >&2
+            exit 1
+          fi
+
+      # 비밀 키는 이 step의 env로만 넘깁니다. 출력하지 않습니다.
+      - name: 공식 서명
+        env:
+          DHO_OFFICIAL_SECRET_KEY: ${{ secrets.DHO_OFFICIAL_SECRET_KEY }}
+        run: |
+          cd "$RUNNER_TEMP/handoff"
+          mkdir -p "$RUNNER_TEMP/signed"
+          node tools/official-pack.mjs sign "dist/$ARCHIVE_NAME" "$RUNNER_TEMP/signed/$ARCHIVE_NAME"
+
+      - name: 서명 확인
+        run: |
+          cd "$RUNNER_TEMP/handoff"
+          node tools/official-pack.mjs verify "$RUNNER_TEMP/signed/$ARCHIVE_NAME" --public-key "$OFFICIAL_PUBLIC_KEY"
+
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: signed
+          path: ${{ runner.temp }}/signed/
+          if-no-files-found: error
+          retention-days: 1
+
+  # 비밀값 없이 서명판을 다시 확인하고 Release를 만듭니다. 이 job만 저장소에 쓸 수 있습니다.
+  publish:
+    needs: sign
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '22'
+          package-manager-cache: false
+
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: handoff
+          path: ${{ runner.temp }}/handoff
+
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: signed
+          path: ${{ runner.temp }}/release
+
+      - name: 서명판 확인
+        run: |
+          cd "$RUNNER_TEMP/handoff"
+          (cd tools && printf '%s' "$TOOL_SHA256SUMS" | sha256sum --check --strict -)
+          name="${ARCHIVE_PREFIX}-${GITHUB_REF_NAME#v}.dho-pack"
+          release="$RUNNER_TEMP/release"
+          if [ "$(find "$release" -type f | wc -l)" != "1" ] || [ ! -f "$release/$name" ]; then
+            echo "서명판 artifact에는 ${name} 하나만 있어야 합니다." >&2
+            exit 1
+          fi
+          node tools/official-pack.mjs verify "$release/$name" --public-key "$OFFICIAL_PUBLIC_KEY"
+          expected="trusted comment: dho-navigator-official-archive-v1 ${OFFICIAL_KIND} ${OFFICIAL_ID} ${GITHUB_REF_NAME#v}"
+          actual="$(unzip -p "$release/$name" dho-official.sig | sed -n 3p)"
+          if [ "$actual" != "$expected" ]; then
+            echo "서명의 kind·id·version이 태그와 다릅니다: ${actual}" >&2
+            exit 1
+          fi
+          (cd "$release" && sha256sum "$name" > "$name.sha256" && cat "$name.sha256")
+
+      - name: Release 만들기
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" "$RUNNER_TEMP"/release/* \
+            --repo "$GITHUB_REPOSITORY" \
+            --verify-tag \
             --title "해위오 에디션 ${GITHUB_REF_NAME}" \
-            --notes "DHO Navigator 2.2.0 이상에서 리소스팩 설치로 \`.dho-pack\` 파일을 설치하세요."
+            --notes "DHO Navigator 2.2.1 이상에서 설치하세요. 공식 서명이 들어 있는 파일이므로 다시 압축하거나 내용을 바꾸면 설치되지 않습니다."
